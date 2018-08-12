@@ -1,52 +1,58 @@
-# wdio-mocha-typescript
-## Features
-- WDIO 6
-- Mocha
-- TypeScript
-- Typed Config
-- ESLint
-- VSCode Integration
-- Multiple Configurations (Devtools, Chromedriver, Sauce Labs)
-- Cross Platform Example Tests
-- Page Object Model
+## poc-webdriverio
 
-## Requirements
-- Node version 8 or higher
-- (for local execution) Latest Chrome Stable
-- (for cloud execution) Sauce Labs Account
+O **poc-webdriverio** é um projeto de testes de integração. <br/>
+Os testes são desenvolvidos em JavaScript utilizando o framework [WebDriverIO](http://webdriver.io/). <br/>
 
-## Quick Start
-- clone the git repo: `git clone https://github.com/pako88/wdio-mocha-typescript.git`
-- install the dependencies: `npm install`
-- (for cloud execution) set the following environment variables with your sauce labs credentials
-    - SAUCE_USERNAME
-    - SAUCE_ACCESS_KEY
+#### Pré requisitos
 
-## Run the Tests
-You can either run the tests with the integrated Visual Studio Code Debug Scripts, or you can run them with one of the following terminal commands.
-### Local Chromedriver Execution
-`npm run test:chromedriver`
-### Local Chrome Devtools Execution
-`npm run test:devtools`
-### Cloud Execution with Sauce Labs
-`npm run test:sauce`
+- node >= 8.9.x
+- yarn >= 1.9.x
 
-## Technical Details
-### TypeScript Transpilation
-TypeScript is transpiled on the fly with ts-node, you don't have to execute the tsc command.  
-To enable this feature and to have typed configurations, js-wrappers are implemented for each configuration.  
-Take a look in the config folder for the technical implementation.
+#### Como executar
 
-## Known Limitations and Issues
-### VSCode
-If you want to debug your tests with breakpoints in VSCode, you have to install the [nightly version of the JavaScript Debugger](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
+Veja como montar um [Servidor Selenium](https://github.com/zalando/zalenium) para executar os testes. <br/>
 
-### Tests
-- actions.ts doesn't work with devtools yet
-- actions.ts doesn't work with safari and ie
-- The uploadFile command is not available in msedge
+Para instalar as dependências do projeto;
+```
+yarn install
+```
 
-## Metrics and Test Results
-[![Sauce Test Status](https://app.eu-central-1.saucelabs.com/browser-matrix/wdio-mocha-typescript.svg)](https://app.eu-central-1.saucelabs.com/u/wdio-mocha-typescript)
+São necessárias as seguintes configurações: <br/>
+No arquivo package.json existe script `tests` nele deve ser configurado.
+- `--host` - Informe o host do Selenium Grid, ex: 172.21.6.4
+- `--baseUrl` - Informe a url do sistema, ex: https://phptravels.org/
 
-![Testing Powered By SauceLabs](https://raw.githubusercontent.com/saucelabs/opensource/master/assets/powered-by-saucelabs-badge-red.svg?sanitize=true "Testing Powered By SauceLabs")
+Para executar testes;
+```
+yarn run tests
+```
+Neste momento testes serão executados no chrome, porém é possível alterar o arquivo de configuração para executar em outros browsers. <br/>
+
+Caso queria fazer debug do teste, inclua o código `browser.debug()` na linha onde deseja fazer debug.
+*Mais informações: [debug](http://webdriver.io/api/utility/debug.html).*
+
+#### Allure Reports
+
+Para gerar o report, execute;
+```
+yarn run report
+```
+
+No diretório *'./allure-logs/allure-report'* haverá os reports do teste.
+
+Abra a index.html no firefox, ou execute;
+```
+./bin/open-report.sh
+```
+
+#### Eslint
+
+Para visualizar os problemas do projeto, execute;
+```
+yarn run check
+```
+
+Para ajustar erros do projeto utilizando o Eslint, execute;
+```
+yarn run format
+```
