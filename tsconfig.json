@@ -1,19 +1,29 @@
 {
   "compilerOptions": {
-      "target": "ES2018",
-      "baseUrl": ".",
-      "paths": {
-          "*": [ "./*" ],
-      },
-      "types": ["node", "@wdio/sync", "@wdio/mocha-framework", "@wdio/devtools-service", "./types/wdio"]
-  },    
-  "include": [
-      "./.eslintrc.js",
-      "./src/**/*.ts",
-      "./config/**/*.ts",
-      "./test/**/*.ts"
-  ],
-  "exclude": [
-    "./node_modules"
-  ]
+    "module": "CommonJS",
+    "lib": ["es2017"],
+    "target": "es5",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "types": [
+      "node",
+      "@wdio/sync",
+      "@wdio/mocha-framework",
+      "wdio-image-comparison-service"
+    ]
+  },
+  "include": ["./**/*"]
 }
