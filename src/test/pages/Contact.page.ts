@@ -1,4 +1,14 @@
-class ContactPage {
+import BasePage from "./Base.page";
+
+export class ContactPage extends BasePage {
+
+    constructor() {
+        super();
+    }
+
+    open(): void {
+        super.open('/contact');
+    }
     get contactLink() {
         return $('body #contact-link');
     }
@@ -41,9 +51,6 @@ class ContactPage {
 
         this.subjectContact.selectByAttribute('value', content.subject);
         this.message.setValue(content.message);
-
         this.buttonSubmitMessage.click();
     }
 }
-
-export default new ContactPage();

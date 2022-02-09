@@ -1,19 +1,18 @@
 {
   "name": "demo-webdriverio-mocha",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WarleyGabriel/demo-webdriverio-mocha.git"
+    "url": "git@github.com:Nallikaea/demo-webdriverio-mocha.git"
   },
-  "author": "Warley Gabriel da Paixão",
+  "author": "Warley Gabriel da Paixão, Maryna Dolhalova",
   "scripts": {
     "build": "npx del ./dist && npx tsc",
     "watch": "npx tsc -w",
-    "code:format": "eslint . --ext .ts && prettier --check \"src/**/*.ts*\" --write",
     "commit": "cz",
     "report:generate": "npx allure generate --clean ./test-report/allure-result/ -o ./test-report/allure-report",
     "report:open": "npx allure open test-report/allure-report",
-    "tests:e2e": "npx del test-report && wdio ./dist/wdio.conf.js --spec ./dist/**/e2e/**/*.spec.js",
+    "run tests:": "npx del test-report && wdio ./dist/wdio.conf.js --spec ./src/test/suits/*.ts",
     "tests:visualregression": "npx del test-report && wdio ./dist/wdio.conf.js --spec ./dist/**/visual-regression/**/*.spec.js"
   },
   "dependencies": {
@@ -24,7 +23,7 @@
     "@wdio/spec-reporter": "^7.2.1",
     "@wdio/sync": "^7.2.3",
     "allure-commandline": "^2.13.8",
-    "chromedriver": "^89.0.0",
+    "chromedriver": "^97.0.4",
     "del-cli": "^3.0.1",
     "fibers": "^5.0.0",
     "mocha": "^8.3.2",
@@ -32,7 +31,7 @@
     "wdio-chromedriver-service": "^7.0.0",
     "wdio-image-comparison-service": "^2.3.0",
     "wdio-performancetotal-service": "^1.0.10",
-    "webdriverio": "^7.2.3"
+    "webdriverio": "^7.16.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
@@ -42,9 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.23.0",
     "husky": "^6.0.0",
-    "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },

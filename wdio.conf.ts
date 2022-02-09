@@ -1,11 +1,15 @@
 import { join } from 'path';
 
+const timeout = process.env.DEBUG === 'true' ? 9999999 : 300000;
+
 exports.config = {
     runner: 'local',
     hostname: 'localhost',
     port: 4444,
     path: '/wd/hub',
-    specs: ['./dist/**/*.spec.js'],
+    specs: [
+        `./src/test/suits/*.ts`
+    ],
     maxInstances: 1,
     capabilities: [
         {
@@ -22,7 +26,7 @@ exports.config = {
     connectionRetryCount: 3,
     framework: 'mocha',
     mochaOpts: {
-        timeout: 30000,
+        timeout: timeout,
     },
     reporters: [
         'spec',
@@ -49,15 +53,6 @@ exports.config = {
             },
         ],
         ['chromedriver'],
-        [
-            'performancetotal',
-            {
-                disableAppendToExistingFile: false,
-                performanceResultsFileName: `performance-results_${new Date().getTime()}`,
-                dropResultsFromFailedTest: false,
-                performanceResultsDirectory: 'test-report/performance-results',
-            },
-        ],
     ],
     autoCompileOpts: {
         autoCompile: true,
@@ -69,6 +64,7 @@ exports.config = {
             baseUrl: './',
         },
     },
+
     before() {
         browser.setWindowSize(1280, 720);
     },

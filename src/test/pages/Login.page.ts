@@ -1,6 +1,13 @@
-class LoginPage {
-    open() {
-        browser.url('/');
+import BasePage from "./Base.page";
+
+export class LoginPage extends BasePage {
+
+    constructor() {
+        super();
+    }
+
+    open(): void {
+        super.open();
     }
 
     get buttonLogin() {
@@ -27,16 +34,23 @@ class LoginPage {
         return $('.info-account');
     }
 
-    login(email: string, password: string) {
-        this.buttonLogin.click();
+    get buttonLogout() {
+        return $('.logout');
+    }
 
+    login(email: string, password: string){
+        try {
+            this.buttonLogin.click();
+        } catch (err) {
+            console.log('The user is already logged in, start to logout');
+            this.buttonLogout.click();
+            console.log('Success');
+            this.buttonLogin.click();
+        }
         this.inputEmail.waitForEnabled();
         this.inputEmail.setValue(email);
         this.inputPassword.setValue(password);
-
         this.buttonSignIn.click();
         this.welcomeMessage.waitForExist();
     }
 }
-
-export default new LoginPage();
