@@ -1,6 +1,6 @@
 import BasePage from "./Base.page";
 
-export class CryptoPage extends BasePage{
+export class CryptoPage extends BasePage {
     protected BASE_URL = 'https://www.mercadobitcoin.com.br/'
     protected API_URL = 'https://cdn.mercadobitcoin.com.br/api/tickers?' + '**'
 
@@ -8,19 +8,19 @@ export class CryptoPage extends BasePage{
         super();
     }
 
-    open() {
-        super.open(this.BASE_URL);
-    }
-
-    get getBaseURL(){
+    get getBaseURL() {
         return this.BASE_URL;
     }
 
-    get getApiURL(){
+    get getApiURL() {
         return this.API_URL;
     }
 
     get bitcoinPriceElement() {
         return $('div[data-category="btc"] p ~ .price');
+    }
+
+    open() {
+        super.open(this.BASE_URL);
     }
 }

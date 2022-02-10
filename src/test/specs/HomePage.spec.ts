@@ -1,5 +1,4 @@
 import {HomePage} from '../pages/Home.page';
-import {LoginPage} from "../pages/Login.page";
 
 describe('Home page tests', () => {
     const homePage: HomePage = new HomePage();
@@ -10,8 +9,8 @@ describe('Home page tests', () => {
     /**
      * Iterator pattern
      */
-    it('Main page elements is present.', function () {
-        for (const e of homePage.mainPageElements){
+    it('C1 Main page elements is present.', function () {
+        for (const e of homePage.mainPageElements) {
             expect(e).toBeDisplayed();
         }
     });

@@ -13,21 +13,19 @@ describe('Send message to customer service.', () => {
         loginPage.login(login.user.login, login.user.password);
     });
 
-    it('Displays a message in heading page.', () => {
+    it('C5 Displays a message in heading page.', () => {
         contactPage.goToContactPage();
 
         expect(contactPage.heading).toHaveText(SystemLabels.CUSTOMER_SERVICE);
     });
 
-    it('Displays successfully after user sends message to customer service.', () => {
+    it('C6 Displays successfully after user sends message to customer service.', () => {
         contactPage.sendMessage({
             subject: '2',
             message: 'My first test.',
             file: 'file.pdf',
         });
 
-        expect(contactPage.successMessage).toHaveText(
-            SystemMessages.FEEDBACK_MESSAGE_SENT,
-        );
+        expect(contactPage.successMessage).toHaveText(SystemMessages.FEEDBACK_MESSAGE_SENT);
     });
 });

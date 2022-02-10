@@ -1,13 +1,9 @@
 import BasePage from "./Base.page";
 
-export class HomePage extends BasePage{
+export class HomePage extends BasePage {
 
     constructor() {
         super();
-    }
-
-    open() {
-        super.open();
     }
 
     get logoSite() {
@@ -20,5 +16,9 @@ export class HomePage extends BasePage{
 
     get mainPageElements() {
         return [this.logoSite, this.cart]
+    }
+
+    open() {
+        super.open();
     }
 }

@@ -15,7 +15,7 @@ export default abstract class BasePage {
             this.title = 'page';
             instance = this;
         } else {
-           return this;
+            return this;
         }
     }
 

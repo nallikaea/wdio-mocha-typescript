@@ -6,9 +6,6 @@ export class ContactPage extends BasePage {
         super();
     }
 
-    open(): void {
-        super.open('/contact');
-    }
     get contactLink() {
         return $('body #contact-link');
     }
@@ -35,6 +32,10 @@ export class ContactPage extends BasePage {
 
     get inputFile() {
         return $('body #fileUpload');
+    }
+
+    open(): void {
+        super.open('/contact');
     }
 
     goToContactPage() {

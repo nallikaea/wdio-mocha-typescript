@@ -6,10 +6,6 @@ export class LoginPage extends BasePage {
         super();
     }
 
-    open(): void {
-        super.open();
-    }
-
     get buttonLogin() {
         return $('.login');
     }
@@ -38,7 +34,11 @@ export class LoginPage extends BasePage {
         return $('.logout');
     }
 
-    login(email: string, password: string){
+    open(): void {
+        super.open();
+    }
+
+    login(email: string, password: string) {
         try {
             this.buttonLogin.click();
         } catch (err) {

@@ -1,5 +1,5 @@
 import {LoginPage} from '../pages/Login.page';
-import { SystemMessages } from '../data/constants/SystemMessages';
+import {SystemMessages} from '../data/constants/SystemMessages';
 import login from '../data/Login.json';
 
 describe('Authentication page.', () => {
@@ -9,15 +9,13 @@ describe('Authentication page.', () => {
         loginPage.open();
     });
 
-    it('Displays login message successfully.', () => {
+    it('C2 Displays login message successfully.', () => {
         loginPage.login(login.user.login, login.user.password);
 
-        expect(loginPage.welcomeMessage).toHaveText(
-            SystemMessages.FEEDBACK_USER_LOGGED,
-        );
+        expect(loginPage.welcomeMessage).toHaveText(SystemMessages.FEEDBACK_USER_LOGGED);
     });
 
-    it('Displays user name on the page.', () => {
+    it('C3 Displays user name on the page.', () => {
         expect(loginPage.userLoggedIn).toHaveText(login.user.name);
     });
 });
