@@ -1,4 +1,11 @@
-class ContactPage {
+import BasePage from "./Base.page";
+
+export class ContactPage extends BasePage {
+
+    constructor() {
+        super();
+    }
+
     get contactLink() {
         return $('body #contact-link');
     }
@@ -27,6 +34,10 @@ class ContactPage {
         return $('body #fileUpload');
     }
 
+    open(): void {
+        super.open('/contact');
+    }
+
     goToContactPage() {
         this.contactLink.click();
         this.heading.waitForExist();
@@ -41,9 +52,6 @@ class ContactPage {
 
         this.subjectContact.selectByAttribute('value', content.subject);
         this.message.setValue(content.message);
-
         this.buttonSubmitMessage.click();
     }
 }
-
-export default new ContactPage();
